@@ -9,8 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            Color(.white).ignoresSafeArea()
+            ScrollView(.vertical) {
+                VStack(spacing: 0) {
+                    XMarkIconButton()
+                    XMarkIconHapticButton()
+                }
+            }
+        }
     }
 }
 
