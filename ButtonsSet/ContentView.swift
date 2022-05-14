@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isHalfSheet = false
+    @State var isActiveHalfSheet = false
+    @State var isActiveCircleButton = false
+    @State var isActiveSemiCircleButton = false
     var body: some View {
         ZStack {
             ScrollView {
                 VStack(spacing: 10) {
-                    HalfScreenInfoButton(isHalfSheet: $isHalfSheet)
+                    CircleMenuButton(isActive: $isActiveCircleButton)
+                    SemiCircleMenuButton(isActive: $isActiveSemiCircleButton)
+                    if !isActiveCircleButton, !isActiveSemiCircleButton {
+                        HalfScreenInfoButton(isHalfSheet: $isActiveHalfSheet)
+                    }
                     Spacer(minLength: 10)
-                    if !isHalfSheet {
+                    if !isActiveHalfSheet, !isActiveCircleButton, !isActiveSemiCircleButton {
                         Group {
                             InfinityWidthButton()
                             InfinityWidthHapticButton()
@@ -28,7 +34,7 @@ struct ContentView: View {
                             Parallax3DMultiHexagotButton()
                         }.padding(.horizontal)
                     }
-                    Spacer()
+                   // Spacer()
                 }
             }
         }.preferredColorScheme(.light)
