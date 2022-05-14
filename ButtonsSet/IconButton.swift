@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IconButton: ButtonStyle {
+struct IconButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(10)
@@ -28,7 +28,7 @@ struct XMarkIconButton: View {
             Button {
             } label: {
                 Image(systemName: "xmark")
-            }.buttonStyle(IconButton())
+            }.buttonStyle(IconButtonStyle())
         }
         .padding()
     }
@@ -37,15 +37,15 @@ struct XMarkIconButton: View {
 struct XMarkIconHapticButton: View {
     var body: some View {
         HStack {
-            Text("xmark with haptic")
+            Text("xmark (haptic)")
                 .foregroundColor(.black)
             Spacer()
             Button {
-                let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                impactMed.impactOccurred()
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
             } label: {
                 Image(systemName: "xmark")
-            }.buttonStyle(IconButton())
+            }.buttonStyle(IconButtonStyle())
         }
         .padding()
     }
