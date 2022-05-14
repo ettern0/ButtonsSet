@@ -14,15 +14,18 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 10) {
                     HalfScreenInfoButton(isHalfSheet: $isHalfSheet)
+                    Spacer(minLength: 10)
                     if !isHalfSheet {
                         Group {
+                            InfinityWidthButton()
+                            InfinityWidthHapticButton()
                             XMarkIconButton()
                             XMarkIconHapticButton()
                             HexagonButton()
                             PentagonButton()
                             MorfPolygonButton()
-                            InfinityWidthButton()
-                            InfinityWidthHapticButton()
+                            ParallaxMultiHexagotButton()
+                            Parallax3DMultiHexagotButton()
                         }.padding(.horizontal)
                     }
                     Spacer()
